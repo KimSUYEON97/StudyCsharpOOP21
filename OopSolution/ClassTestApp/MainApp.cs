@@ -10,11 +10,11 @@ namespace ClassTestApp
             Console.WriteLine("Catobject 생성");
             /*Cat kitty = new Cat();
             kitty.Name = "Kitty";*/
-            Cat kitty = new("Kitty", 3);//protected일 경우 초기화 방식
-            kitty.Age = 3;
+            Animal kitty = new Cat("Kitty", 3);//protected일 경우 초기화 방식
+            /*kitty.Age = 3;
             kitty.Color = "white";//alt+enter 하면 nero 처럼 변형 가능
 
-            kitty.Meow();
+            kitty.Meow();*/
 
             /*Cat nero = new Cat
             {
