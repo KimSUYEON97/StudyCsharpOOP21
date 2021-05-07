@@ -34,11 +34,11 @@ namespace PropertyTestApp
                 }
                 else
                 {
-                    this.age = value;//
+                    this.age = value;
                 }
                 
             }
-        }
+        }//property get,set메소드 대체
 
         /*public string Name
         {

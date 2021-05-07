@@ -9,8 +9,12 @@ namespace IndexerTestApp
 {
     class MyList : IEnumerable, IEnumerator
     {
-        private int[] array;
+        //IEnumerable,IEnumerator 상속 == for each 사용 가능하게 해줌
 
+        private int[] array;
+        private int position = -1; //배열의 현재 위치값  why -1? 배열이 비었음을 표시
+
+        //배열화 <배열이 아닌 MyList를 배열처럼 만들어주는 property>
         public int this[int index]//== MyList[i] == array[i]
         {
             get { return array[index]; } 
@@ -33,27 +37,42 @@ namespace IndexerTestApp
             }
         }//length property생성 이유 : array가 private여서 main에서 접근 불가하므로
 
-        public object Current => throw new NotImplementedException();
-
         public MyList()
         {
             array = new int[3];
         }
 
 
-        public void Reset()
+        public void Reset()// 컬렉션의 첫 번째 요소 앞의 초기 위치에 열거자를 설정합니다.
         {
-            throw new NotImplementedException();
+            position = -1;//초기화
+            //throw new NotImplementedException();
         }
 
-        public IEnumerator GetEnumerator()
+        //foreach를 위한 작업
+
+        //IEnumerator method
+        //public object Current => throw new NotImplementedException();//컬렉션에서 열거자의 현재 위치에 있는 요소를 가져옵니다.
+        public object Current => array[position];//변형
+
+        /*public object Current // == public object Current => array[position];
         {
-            throw new NotImplementedException();
+            get { return array[position]; } // 현재값 나타냄 , foreach에만 필요!
+        }*/
+
+
+        //IEnumerable method!
+        public IEnumerator GetEnumerator()//컬렉션을 반복하는 열거자를 반환 
+        {
+            return this;
+            //throw new NotImplementedException();
         }
 
-        public bool MoveNext()
+        public bool MoveNext()//열거자를 컬렉션의 다음 요소로 이동합니다.
         {
-            throw new NotImplementedException();
+            position ++;
+            return (position < array.Length);
+            //throw new NotImplementedException();
         }
     }
 }
