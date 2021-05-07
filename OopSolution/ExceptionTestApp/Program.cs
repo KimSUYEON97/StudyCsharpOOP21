@@ -29,7 +29,10 @@ namespace ExceptionTestApp
             int[] list = { 107, 108, 109 };
             try
             {
-                string msg = null;
+                /*string msg = null;
+                Console.WriteLine(msg.Length);*/
+
+                string msg = "Hell";
                 Console.WriteLine(msg.Length);
 
                 var result = list[1] / 0;
@@ -62,7 +65,7 @@ namespace ExceptionTestApp
             }
             finally
             {
-                //오후에
+                Console.WriteLine("Finally, 언제든지 실행");
             }
 
             Console.WriteLine("프로그램 종료!");//
