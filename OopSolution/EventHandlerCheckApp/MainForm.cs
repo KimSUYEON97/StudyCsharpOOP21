@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace EventHandlerCheckApp
 {
     public partial class MainForm : Form
     {
+        static readonly Logger logger = LogManager.GetCurrentClassLogger();//추가
         public MainForm()
         {
             InitializeComponent();
@@ -26,7 +28,28 @@ namespace EventHandlerCheckApp
         {
             var result = TxtUserID.Text + "\n" + TxtPassWord.Text;
             MessageBox.Show($"your ID n PWD is {result}");
+
+            try
+            {
+                var val = TxtPassWord.Text.Substring(3, 2);//string split method
+                MessageBox.Show($"{val}");
+                logger.Info("execute complete");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Occur");
+                logger.Error("Error Occur");
+                logger.Error($"{ex}");
+                //throw;
+            }
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //초기화...
+
+            //logger
+            logger.Info("Load MainForm");
+        }
     }
 }

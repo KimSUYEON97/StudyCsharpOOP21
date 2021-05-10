@@ -28,10 +28,13 @@ namespace DelegateChainTestApp
             #endregion
 
             Calculate calc;
-            calc = delegate (int a, int b) // Calculate class의 plus함수와 같은 역할
+            /*calc = delegate (int a, int b) // Calculate class의 plus함수와 같은 역할 , anonymous 함수, 일반식
              {
                  return a + b;
-             };
+             }; //(**람다식으로 줄여서 표현 가능하다 21.05.10) */
+
+            calc = (a, b) => a + b; //anonymous 함수 의 람다식 표현
+            
             Console.WriteLine($"a + b = {calc(3, 5)}");
         }
     }

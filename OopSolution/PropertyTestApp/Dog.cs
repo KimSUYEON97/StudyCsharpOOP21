@@ -20,7 +20,9 @@ namespace PropertyTestApp
             get
             {
                 return this.age;
-            }
+            }//lambda화 == get => this.age
+
+
 
             set
             {
